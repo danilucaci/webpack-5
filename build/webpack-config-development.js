@@ -32,6 +32,10 @@ module.exports = function getWebpackDevelopmentConfig() {
           test: /\.scss$/,
           use: ["style-loader", "css-loader", "sass-loader"],
         },
+        {
+          test: /\.hbs$/,
+          use: ["handlebars-loader"],
+        },
       ],
     },
     plugins: [new CleanWebpackPlugin()],
