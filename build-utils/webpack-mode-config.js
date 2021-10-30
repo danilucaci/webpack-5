@@ -1,6 +1,6 @@
 const path = require("path");
 
-const BUILD_DIR_PATH = path.resolve("./build");
+const BUILD_DIR_PATH = path.resolve("./build-utils");
 
 module.exports = function getWebpackModeConfig(mode = "production") {
   const FILE_NAME = `webpack-config-${mode}`;
