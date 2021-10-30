@@ -10,8 +10,8 @@ module.exports = function getWebpackProductionConfig() {
   return {
     output: {
       path: DIST_PATH,
-      filename: "[name].js",
-      chunkFilename: "[name].bundle.js",
+      filename: "[name].[hash].js",
+      chunkFilename: "[name].[hash].bundle.js",
       publicPath: "dist/",
     },
     module: {
