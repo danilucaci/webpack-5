@@ -13,8 +13,8 @@ module.exports = {
   },
   output: {
     path: DIST_PATH,
-    filename: "js/[name].js",
-    chunkFilename: "js/[name].bundle.js",
+    filename: "[name].js",
+    chunkFilename: "[name].bundle.js",
     publicPath: "dist/",
   },
   module: {
@@ -26,6 +26,14 @@ module.exports = {
       {
         test: /\.txt$/,
         type: "asset/source",
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
