@@ -35,6 +35,26 @@ module.exports = {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.js$/,
+        exclude: "/node_modules",
+        include: SOURCE_PATH,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              [
+                "@babel/env",
+                {
+                  useBuiltIns: "usage",
+                  corejs: "3",
+                  modules: false,
+                },
+              ],
+            ],
+          },
+        },
+      },
     ],
   },
   optimization: {
