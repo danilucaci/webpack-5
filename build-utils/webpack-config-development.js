@@ -13,6 +13,21 @@ module.exports = function getWebpackDevelopmentConfig() {
       chunkFilename: "[name].bundle.js",
       publicPath: "/",
     },
+    devServer: {
+      compress: true,
+      port: 5000,
+      hot: true,
+      // historyApiFallback: true,
+      static: {
+        directory: DIST_PATH,
+      },
+      devMiddleware: {
+        index: "index.html",
+      },
+      client: {
+        overlay: true,
+      },
+    },
     module: {
       rules: [
         getWebpackBabelConfig(),
