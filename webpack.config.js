@@ -1,69 +1,16 @@
-const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { merge } = require("webpack-merge");
 
-const SOURCE_PATH = path.resolve("./src");
-const ENTRY_FILE_PATH = path.join(SOURCE_PATH, "/index.js");
-const DIST_PATH = path.resolve("./dist");
+const getWebpackCommonConfig = require("./build/webpack-common-config");
+const getWebpackModeConfig = require("./build/webpack-mode-config");
 
-module.exports = (_env, { mode = "development" }) => {
-  const CSS_STYLE_LOADER =
-    mode === "production" ? MiniCssExtractPlugin.loader : "style-loader";
+module.exports = function webpackConfig(_env, { mode = "development" }) {
+  const commonConfig = getWebpackCommonConfig(mode);
+  const modeConfig = getWebpackModeConfig(mode);
 
-  return {
-    mode: mode,
-    entry: {
-      main: ENTRY_FILE_PATH,
-    },
-    output: {
-      path: DIST_PATH,
-      filename: "[name].js",
-      chunkFilename: "[name].bundle.js",
-      publicPath: "dist/",
-    },
-    module: {
-      rules: [
-        {
-          test: /\.(jpg|png)$/,
-          type: "asset/resource",
-        },
-        {
-          test: /\.txt$/,
-          type: "asset/source",
-        },
-        {
-          test: /\.css$/,
-          use: [CSS_STYLE_LOADER, "css-loader"],
-        },
-        {
-          test: /\.scss$/,
-          use: [CSS_STYLE_LOADER, "css-loader", "sass-loader"],
-        },
-        {
-          test: /\.js$/,
-          exclude: "/node_modules",
-          include: SOURCE_PATH,
-          use: {
-            loader: "babel-loader",
-            options: {
-              presets: [
-                [
-                  "@babel/env",
-                  {
-                    useBuiltIns: "usage",
-                    corejs: "3",
-                    modules: false,
-                  },
-                ],
-              ],
-            },
-          },
-        },
-      ],
-    },
-    plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin()],
-    optimization: {
-      runtimeChunk: "single",
-    },
-  };
+  const mergedConfig = merge({
+    ...commonConfig,
+    ...modeConfig,
+  });
+
+  return mergedConfig;
 };
