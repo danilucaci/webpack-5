@@ -1,11 +1,15 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const SOURCE_PATH = path.resolve("./src");
 const ENTRY_FILE_PATH = path.join(SOURCE_PATH, "/index.js");
 const DIST_PATH = path.resolve("./dist");
 
-module.exports = (env, { mode = "development" }) => {
+module.exports = (_env, { mode = "development" }) => {
+  const CSS_STYLE_LOADER =
+    mode === "production" ? MiniCssExtractPlugin.loader : "style-loader";
+
   return {
     mode: mode,
     entry: {
@@ -29,11 +33,11 @@ module.exports = (env, { mode = "development" }) => {
         },
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"],
+          use: [CSS_STYLE_LOADER, "css-loader"],
         },
         {
           test: /\.scss$/,
-          use: ["style-loader", "css-loader", "sass-loader"],
+          use: [CSS_STYLE_LOADER, "css-loader", "sass-loader"],
         },
         {
           test: /\.js$/,
@@ -57,7 +61,7 @@ module.exports = (env, { mode = "development" }) => {
         },
       ],
     },
-    plugins: [new CleanWebpackPlugin()],
+    plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin()],
     optimization: {
       runtimeChunk: "single",
     },
