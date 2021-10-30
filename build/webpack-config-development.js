@@ -11,7 +11,7 @@ module.exports = function getWebpackDevelopmentConfig() {
       path: DIST_PATH,
       filename: "[name].js",
       chunkFilename: "[name].bundle.js",
-      publicPath: "dist/",
+      publicPath: "/",
     },
     module: {
       rules: [
