@@ -7,10 +7,7 @@ module.exports = function webpackConfig(_env, { mode = "development" }) {
   const commonConfig = getWebpackCommonConfig(mode);
   const modeConfig = getWebpackModeConfig(mode);
 
-  const mergedConfig = merge({
-    ...commonConfig,
-    ...modeConfig,
-  });
+  const mergedConfig = merge(commonConfig, modeConfig);
 
   return mergedConfig;
 };
