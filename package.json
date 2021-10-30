@@ -1,0 +1,27 @@
+{
+  "name": "webpack-5",
+  "version": "1.0.0",
+  "description": "A boilerplate repo for working with Webpack 5 and React.",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "start": "webpack --mode production",
+    "dev": "npm run clean && webpack --watch --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danilucaci/webpack-5.git"
+  },
+  "keywords": [],
+  "author": "Dani Lucaci <hello@danilucaci.com> (https://www.danilucaci.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danilucaci/webpack-5/issues"
+  },
+  "homepage": "https://github.com/danilucaci/webpack-5#readme",
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
