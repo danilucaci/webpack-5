@@ -4,9 +4,8 @@
   "description": "A boilerplate repo for working with Webpack 5 and React.",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist",
     "start": "webpack --mode production",
-    "dev": "npm run clean && webpack --watch --mode development"
+    "dev": "webpack --watch --mode development"
   },
   "repository": {
     "type": "git",
@@ -23,6 +22,7 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
     "core-js": "^3.19.0",
     "css-loader": "^6.5.0",
     "rimraf": "^3.0.2",
