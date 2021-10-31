@@ -12,6 +12,12 @@ module.exports = function getWebpackBabelConfig() {
       options: {
         presets: [
           [
+            "@babel/preset-react",
+            {
+              runtime: "automatic",
+            },
+          ],
+          [
             "@babel/env",
             {
               useBuiltIns: "usage",
