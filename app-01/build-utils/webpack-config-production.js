@@ -33,10 +33,6 @@ module.exports = function getWebpackProductionConfig() {
           test: /\.scss$/,
           use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
         },
-        {
-          test: /\.hbs$/,
-          use: ["handlebars-loader"],
-        },
       ],
     },
     plugins: [

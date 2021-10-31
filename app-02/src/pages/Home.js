@@ -1,4 +1,4 @@
-import HelloWorldButton from "../components/HelloWorldButton/HelloWorldButton";
+import HelloWorldButton from "../components/HelloWorldButton";
 
 function Home() {
   return <HelloWorldButton name="world" />;

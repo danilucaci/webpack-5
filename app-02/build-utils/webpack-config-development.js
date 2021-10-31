@@ -15,9 +15,9 @@ module.exports = function getWebpackDevelopmentConfig() {
     },
     devServer: {
       compress: true,
-      port: 5000,
+      port: 5001,
       hot: true,
-      // historyApiFallback: true,
+      historyApiFallback: true,
       static: {
         directory: DIST_PATH,
       },
@@ -47,10 +47,6 @@ module.exports = function getWebpackDevelopmentConfig() {
         {
           test: /\.scss$/,
           use: ["style-loader", "css-loader", "sass-loader"],
-        },
-        {
-          test: /\.hbs$/,
-          use: ["handlebars-loader"],
         },
       ],
     },

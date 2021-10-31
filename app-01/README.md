@@ -1,4 +1,4 @@
-# Webpack 5 Module Federation Boilerplate
+# Webpack 5 App 01
 
 A boilerplate repo for working with Webpack 5 and React.
 
