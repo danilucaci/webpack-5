@@ -22,6 +22,7 @@ module.exports = function getWebpackDevelopmentConfig() {
         directory: DIST_PATH,
       },
       devMiddleware: {
+        // writeToDisk: true,
         index: "index.html",
       },
       client: {

@@ -10,8 +10,8 @@ module.exports = function getWebpackProductionConfig() {
   return {
     output: {
       path: DIST_PATH,
-      filename: "[name].[hash].js",
-      chunkFilename: "[name].[hash].bundle.js",
+      filename: "[name].[contenthash].js",
+      chunkFilename: "[name].[contenthash].bundle.js",
       publicPath: "/",
     },
     module: {
@@ -43,7 +43,7 @@ module.exports = function getWebpackProductionConfig() {
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: "[name].[contenthash].css",
-        chunkFilename: "[id].[contenthash].css",
+        chunkFilename: "[name].[contenthash].css",
       }),
     ],
   };
