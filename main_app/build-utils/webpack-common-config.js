@@ -1,6 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const InjectBodyPlugin = require("inject-body-webpack-plugin").default;
+const { ModuleFederationPlugin } = require("webpack").container;
+
+const dependencies = require("../package.json").dependencies;
 
 const SOURCE_PATH = path.resolve("./src");
 const INDEX_PAGE_NAME = "index";
@@ -30,6 +33,25 @@ module.exports = function getWebpackCommonConfig(mode = "production") {
       }),
       new InjectBodyPlugin({
         content: "<div id=root></div>",
+      }),
+      new ModuleFederationPlugin({
+        name: "main_app",
+        filename: "remoteEntry.js",
+        shared: {
+          react: {
+            singleton: true,
+            eager: true,
+            requiredVersion: dependencies.react,
+          },
+          "react-dom": {
+            singleton: true,
+            eager: true,
+            requiredVersion: dependencies["react-dom"],
+          },
+        },
+        remotes: {
+          lib_app: "lib_app@http://localhost:5001/remoteEntry.js",
+        },
       }),
     ],
   };

@@ -12,7 +12,7 @@ module.exports = function getWebpackProductionConfig() {
       path: DIST_PATH,
       filename: "[name].[contenthash].js",
       chunkFilename: "[name].[contenthash].bundle.js",
-      publicPath: "/",
+      publicPath: "http://localhost:5001/",
     },
     module: {
       rules: [

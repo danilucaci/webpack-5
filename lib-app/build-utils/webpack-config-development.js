@@ -11,11 +11,11 @@ module.exports = function getWebpackDevelopmentConfig() {
       path: DIST_PATH,
       filename: "[name].js",
       chunkFilename: "[name].bundle.js",
-      publicPath: "/",
+      publicPath: "auto",
     },
     devServer: {
       compress: true,
-      port: 5000,
+      port: 5001,
       hot: true,
       historyApiFallback: true,
       static: {
